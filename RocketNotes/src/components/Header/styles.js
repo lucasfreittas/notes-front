@@ -55,4 +55,9 @@ export const Logout = styled.button`
         font-size: 24px;
         color: ${({theme}) => theme.COLORS.WHITE}
     }
+    
+    >svg:hover {
+        color: ${({theme}) => theme.COLORS.ORANGE}
+    }
+
 `
