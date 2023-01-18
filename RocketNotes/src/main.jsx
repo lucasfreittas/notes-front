@@ -7,6 +7,7 @@ import GlobalStyles from './styles/global';
 
 import { Details } from './pages/Details';
 import { Home } from './pages/Home';
+import { Login } from './pages/Login';
 
 
 
@@ -14,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <Home />
+      <Login />
     </ThemeProvider>
   </React.StrictMode>,
 )
