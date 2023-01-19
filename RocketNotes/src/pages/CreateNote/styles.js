@@ -11,6 +11,14 @@ export const Container = styled.div`
     height: 100vh;
     
     justify-items: center;
+
+    > main {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        grid-area: 'content';
+        overflow-y: auto;
+    }
 `
 
 export const Form = styled.form`

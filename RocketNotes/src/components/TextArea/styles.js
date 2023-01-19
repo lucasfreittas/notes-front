@@ -4,13 +4,15 @@ export const Container = styled.textarea`
     background-color: ${({theme}) => theme.COLORS.BACKGROUND_900};
     color: ${({theme}) => theme.COLORS.WHITE};
 
-    height: 150px;
+    min-height: 150px;
     width: 100%;
     padding: 12px;
 
     margin-bottom: 8px;
     border-radius: 4px;
     border: none;
+
+    resize: none;
 
     &::placeholder{
         font-size: 16px;

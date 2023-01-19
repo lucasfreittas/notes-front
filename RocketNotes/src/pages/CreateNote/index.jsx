@@ -12,30 +12,30 @@ export function CreateNote(){
     return(
         <Container>
             <Header/>
+            <main>
+                <Form>
+                    <header>
+                        <h1>Criar Nota</h1>
+                        <ButtonText title='voltar' isActivate={true} />
+                    </header>
+                    <Input type='text' placeholder='Título'/>
+                    <TextArea placeholder='Observações'/>
 
-            <Form>
-                <header>
-                    <h1>Criar Nota</h1>
-                    <ButtonText title='voltar' isActivate={true} />
-                </header>
-                <Input type='text' placeholder='Título'/>
-                <TextArea placeholder='Observações'/>
+                    <Section title='Links Úteis'>
+                        <NoteItem value='http://rocketseat.com' />
+                        <NoteItem placeholder='Novo Link' isNew={true} />
+                    </Section>
 
-                <Section title='Links Úteis'>
-                    <NoteItem value='http://rocketseat.com' />
-                    <NoteItem placeholder='Novo Link' isNew={true} />
-                </Section>
+                    <Section title='Tags'>
+                        <div className='tags'>
+                            <NoteItem value='NodeJS' />
+                            <NoteItem placeholder='Nova Tag' isNew={true} />
+                        </div>
+                    </Section>
 
-                <Section title='Tags'>
-                    <div className='tags'>
-                        <NoteItem value='NodeJS' />
-                        <NoteItem placeholder='Nova Tag' isNew={true} />
-                    </div>
-                </Section>
-
-                <Button type='button' title='Enviar'/>
-            </Form>
-           
+                    <Button type='button' title='Enviar'/>
+                </Form>
+            </main>           
         </Container>
     )
 }
