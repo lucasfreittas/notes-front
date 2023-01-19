@@ -5,6 +5,8 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
 
+import { Link } from 'react-router-dom';
+
 
 export function SignIn () {
     return(
@@ -20,7 +22,10 @@ export function SignIn () {
                 <Input type='text' placeholder='E-mail' icon={FiMail}/>
                 <Input type='password' placeholder='Senha' icon={FiLock}/>
                 <Button title='Criar Conta'/>
-                <ButtonText title='Voltar para o Login' isActivate/>
+
+                <Link to='/'>
+                    <ButtonText title='Voltar para o Login' isActivate/>
+                </Link>
             </Form>
 
             

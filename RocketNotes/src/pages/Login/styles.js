@@ -16,7 +16,7 @@ export const Form = styled.div`
 
     justify-content: center;
     align-items: center;
-    padding: 0 136px;
+    padding: 0 162px;
     
 
     > h1 {
@@ -32,7 +32,7 @@ export const Form = styled.div`
     > h2 {
         color: ${({theme}) => theme.COLORS.WHITE};
         margin-bottom: 24px;
-        margin: 62px 0;
+        margin: 56px 0;
 
     }
 

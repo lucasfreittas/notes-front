@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -36,10 +37,17 @@ export const Content = styled.div`
     max-width: 650px;
     margin: 0 auto;
 
+    > :nth-child(1){
+        margin-top: 50px;
+        text-align: left;
+        width: 100%;
+
+    }
+
     > h1 {
         font-size: 36px;
         font-weight: 500;
-        padding-top: 64px;
+        padding-top: 40px;
     }
 
     > p {

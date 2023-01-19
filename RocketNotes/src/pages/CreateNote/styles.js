@@ -28,6 +28,7 @@ export const Form = styled.form`
 
     > header {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         margin: 36px 0 24px 0
     }

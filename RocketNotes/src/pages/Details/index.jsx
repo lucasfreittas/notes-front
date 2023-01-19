@@ -6,13 +6,16 @@ import { Section } from '../../components/Section';
 import { Tag } from '../../components/Tag';
 import { ButtonText } from '../../components/ButtonText';
 
+import { Link } from 'react-router-dom';
+
 export function Details() {
     return(
         <Container>
             <Header/>
             <main>
                 <Content>
-                    <ButtonText title='Excluir Nota'/>
+
+                    <ButtonText title='Excluir Nota' isActivate/>
                     
                     <h1>Exemplo de Nota</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -37,7 +40,9 @@ export function Details() {
                         <Tag title='NodeJS'/>
                     </Section>
 
-                    <Button title = "Voltar"/>
+                    <Link to='/'> 
+                        <Button title = "Voltar"/>
+                    </Link>
                 </Content>
             </main>
         </Container>
