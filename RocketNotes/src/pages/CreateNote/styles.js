@@ -23,4 +23,19 @@ export const Form = styled.form`
         justify-content: space-between;
         margin: 36px 0 24px 0
     }
+
+    .tags {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        flex-wrap: wrap;
+        
+        > :nth-child(n){
+        width: 192px;
+    }   
+    
+    }
+
+
+
 `
