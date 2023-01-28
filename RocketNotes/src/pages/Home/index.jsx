@@ -45,7 +45,7 @@ export function Home(){
             </Content>
             
             
-            <NewNote to='/profile'>
+            <NewNote to='/createnote'>
                 <FiPlus />
                 Criar Nota
             </NewNote>
