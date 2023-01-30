@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Container, Form, Background } from './styles';
 import {FiLock, FiMail} from 'react-icons/fi'
 
@@ -5,10 +6,20 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
 
+import { useAuth } from '../../hooks/auth';
 import { Link } from 'react-router-dom';
 
 
 export function Login () {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const { signIn } = useAuth();
+
+    function handleSignIn(){
+        signIn({ email, password});
+    }
+
     return(
         <Container>
             <Form>
@@ -16,10 +27,10 @@ export function Login () {
                 <p>Aplicação para salvar e gerenciar seus links úteis.</p>
 
                 <h2>Faça seu login</h2>
-                <Input type='text' placeholder='E-mail' icon={FiMail}/>
-                <Input type='password' placeholder='Senha' icon={FiLock}/>
+                <Input type='text' placeholder='E-mail' icon={FiMail} onChange={e=>setEmail(e.target.value)}/>
+                <Input type='password' placeholder='Senha' icon={FiLock} onChange={e=>setPassword(e.target.value)}/>
                 
-                <Button title='Entrar'/>
+                <Button title='Entrar' onClick={handleSignIn}/>
                 <Link to='/register'>
                     <ButtonText title='Criar Conta' isActivate/>
                 </Link>
