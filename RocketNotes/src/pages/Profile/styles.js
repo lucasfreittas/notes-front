@@ -27,12 +27,15 @@ export const Avatar = styled.div`
     align-items: center;
     position: relative;
     width: 240px;
+    height: 240px;
     margin-top: -125px;
     margin-bottom: 40px;
 
-     > img {
+     img {
         width: 240px;
+        height: 240px;
         border-radius: 50%;
+        object-fit: cover;
        
     }
 
