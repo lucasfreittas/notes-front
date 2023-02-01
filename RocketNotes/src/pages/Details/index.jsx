@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Container, Links, Content } from './styles';
 
 import { Button } from '../../components/Button';
@@ -6,45 +7,87 @@ import { Section } from '../../components/Section';
 import { Tag } from '../../components/Tag';
 import { ButtonText } from '../../components/ButtonText';
 
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { api } from '../../services';
+
 
 export function Details() {
+    const [data, setData] = useState(null);
+
+    const params = useParams();
+    const navigate = useNavigate()
+
+
+    function handleBack(){
+        navigate(-1)
+    }
+
+    async function handleRemove(){
+        const confirm = window.confirm('Deseja realmente remover a note?');
+
+        if(confirm){
+            await api.delete(`/notes/${params.id}`);
+            navigate(-1)
+        }
+    }
+
+    useEffect(() => {
+        async function fetchNote(){
+            const response = await api.get(`/notes/${params.id}`)
+            setData(response.data);
+        }
+
+        fetchNote();
+    }, [])
+
     return(
         <Container>
             <Header/>
-            <main>
+
+            { 
+            data &&
+                <main>
                 <Content>
 
-                    <ButtonText title='Excluir Nota' isActivate/>
+                    <ButtonText title='Excluir Nota' isActivate onClick={handleRemove}/>
                     
-                    <h1>Exemplo de Nota</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Asperiores ut similique veritatis fugiat eaque a odio adipisci,
-                        explicabo voluptatum porro. Ipsa, corporis veniam perferendis
-                        nostrum quas dolor dolore similique doloremque?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Asperiores ut similique veritatis fugiat eaque a odio adipisci,
-                        explicabo voluptatum porro. Ipsa, corporis veniam perferendis
-                        nostrum quas dolor dolore similique doloremque?</p>
-                        
+                    <h1>{data.note.title}</h1>
+                    <p>{data.note.description}</p>
+
+                { 
+                data.links &&        
                     <Section title='Links Úteis'>
                         <Links>
-                            <li> <a href="#">https://www.rocketseat.com.br</a> </li>
-                            <li> <a href="#">https://www.rocketseat.com.br</a> </li>
-                            <li> <a href="#">https://www.rocketseat.com.br</a> </li>
+                            {
+                            data.links.map(link => (
+                                <li key={String(link.id)}>
+                                    <a href={link.url} target='_blank' > {link.url} </a>
+                                </li>
+                            ))
+                            }
                         </Links>
                     </Section>
 
+                }
+
+                {
+                data.tags &&
                     <Section title='Marcadores'>
-                        <Tag title="express"/>
-                        <Tag title='NodeJS'/>
+                        {
+                        data.tags.map(tag => (
+                            <Tag key={String(tag.id)} title={tag.name}/>
+                        ))
+                        }
                     </Section>
+                }
 
                     <Link to='/'> 
-                        <Button title = "Voltar"/>
+                        <Button title = "Voltar" onClick={handleBack}/>
                     </Link>
                 </Content>
-            </main>
+                </main>
+            }
+
         </Container>
     )
 }
